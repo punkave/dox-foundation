@@ -46,13 +46,14 @@ html
 
             ul.no-bullet.tags
               each tag in comment.tags
-                unless tag.type == 'api'
-                  li.tag
-                    span.type="@"+tag.type + ": "
-                    each value, key in tag
-                      if (['type'].indexOf(key) === -1)
-                        - if (key === 'types') value="{"+value+"}"
-                        span(class=key)= value
+                if tag.type
+                  unless tag.type == 'api'
+                    li.tag
+                      span.type="@"+tag.type + ": "
+                      each value, key in tag
+                        if (['type'].indexOf(key) === -1)
+                          - if (key === 'types') value="{"+value+"}"
+                          span(class=key)= value
 
             .section-container.code.auto(data-section="accordian", data-options="one_up: false;")
               .section
