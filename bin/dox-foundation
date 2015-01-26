@@ -26,6 +26,7 @@ program
   .option('-s, --source <source>', 'The folder(s) which should be parsed. Multiple folders should be comma separated')
   .option('-i, --ignore <directories>', 'Comma seperated list of directories to ignore. Overrides default of ' + ignoredDirs)
   .option('-T, --target <target>', 'The folder which will contain the generated documentation. Default: <process.cwd()>/docs', 'docs')
+  .option('-S, --skipSingleStar', 'Parse only double-starred comments, f.e. /** ... */.')
   .option('--template <jade template>', 'A custom jade template file, overriding the default');
 
 // examples
@@ -63,7 +64,10 @@ if (program.source) {
   var files = formatter.collectFiles(source, { ignore: ignore });
 
   // Dox all those files
-  files = formatter.doxFiles(source, target, { raw: program.raw }, files);
+  files = formatter.doxFiles(source, target, {
+      raw:            program.raw,
+      skipSingleStar: program.skipSingleStar
+  }, files);
 
   // Set correct paths to produce the index.html file
   var indexPath = path.relative(process.cwd(), target) + path.sep + 'index.html';
