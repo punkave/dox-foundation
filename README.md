@@ -2,6 +2,10 @@
 
 [![Dependency Status](https://gemnasium.com/punkave/dox-foundation.png)](https://gemnasium.com/punkave/dox-foundation)
 
+# Maintainer Needed
+
+I haven't had a need to use this for a long time and things are piling up. If anyone wants to take it over. Let me know http://twitter.com/mattmcmanus
+
 Use [dox](https://github.com/visionmedia/dox) to automatically generate beautiful html documentation.
 
 Outputted HTML is based on templates and css from [ZURB's Foundation](http://foundation.zurb.com/) and syntax highlighting is done by [Prism.js](http://prismjs.com/).
