@@ -2,6 +2,8 @@ doctype html
 html
   head
     include ./_head.jade
+    script.
+      window.comments = !{JSON.stringify(comments)}
 
   body
     .row
@@ -48,11 +50,18 @@ html
               each tag in comment.tags
                 unless tag.type == 'api'
                   li.tag
-                    span.type="@"+tag.type + ": "
-                    each value, key in tag
-                      if (['type'].indexOf(key) === -1)
-                        - if (key === 'types') value="{"+value+"}"
-                        span(class=key)= value
+                    span.type="@"+tag.type + " "
+                    - if (tag.html)
+                      span(class="#{key} make-inline")!= tag.html
+                    - else
+                      span(class=key)
+                        .label.radius.secondary.ctx-type!= tag.typesDescription
+                        if tag.name
+                          != tag.name
+                        - if (tag.type.match(/returns?/))
+                          ul.description!= tag.description
+                        - else
+                          != tag.description
 
             .section-container.code.auto(data-section="accordian", data-options="one_up: false;")
               .section

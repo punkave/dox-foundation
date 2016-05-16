@@ -48,7 +48,7 @@
   },
   "dependencies": {
     "underscore": "*",
-    "dox": "~0.4.3",
+    "dox": "^0.8.1",
     "commander": "~1.2.0",
     "jade": "~1.0.0",
     "mkdirp": "*",
